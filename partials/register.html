@@ -1,0 +1,34 @@
+<div class='view-body'>
+  <div class='data-holder-sm'>
+
+    <div class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+        <div class="pannel pannel-default">
+          <div class="pannel-body">
+
+            <h2 class='register-header'>Register</h2>
+
+            <form role="form" novalidate="novalidate" name="userForm">
+                <div class='form-group make-orange'>
+                  <label for="email">Email</label>
+                </div>
+                <div>
+                  <input id="email" type="text" name="email" ng-model="user.email" autofocus="autofocus" required="required" ng-minlength="3" class="form-control"/>
+                </div>
+                <div class="form-group make-orange">
+                  <label for="password">Password</label>
+                </div>
+                <div>
+                <input id="password" type="password" name="password" ng-model="user.password" required="required" ng-minlength="3" class="form-control"/>
+              </div>
+                <button ng-click="register()" class="btn btn-success">Register</button>
+              </div>
+            </form>
+
+        </div>
+      </div>
+      <div class="col-xs-4"></div>
+    </div>
+  </div>
+</div>

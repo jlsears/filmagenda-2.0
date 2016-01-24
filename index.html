@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html>
+<head>
+  <metacharset='utf8'>
+  <base href='/'>
+  <title> The Film Agenda App</title>
+  <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css'>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway">
+  <link rel='stylesheet' href='css/main.css'>
+
+
+  <!-- <div class='top-holder'> -->
+
+<div id="banner-photo">
+  <nav class="navbar navbar-default nav-container">
+      <ul class="nav navbar-nav fa-head">
+        <li class='yfa'><p>Your Film Agenda</p> <span class="sr-only">(current)</span></li>
+      </ul>
+      <ul class="nav navbar-nav head-links">
+        <li><a href="/#/menu">Menu <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/tosee">To See <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/haveseen">Have Seen <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/faveperformers">Artists <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/thetweets">Newsfeed <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/localshow">Local Showings <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/friendnotif">Notifications <span class="sr-only">(current)</span></a></li>
+        <li><a href="/movie/list">| <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/movieenter" >New Movie <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/artistenter" >New Artist <span class="sr-only">(current)</span></a></li>
+      </ul>
+  </nav>
+  <div>
+    <p class='circle-icon'><span class="size-that-glyph glyphicon glyphicon-menu-down"></span></p>
+  </div>
+</div>
+</head>
+
+<div ng-view>
+
+<body ng-app="myApp">
+
+
+
+</div>
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src='bower_components/jquery/dist/jquery.min.js'></script>
+  <script src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+  <script src='bower_components/firebase/firebase.js'></script>
+  <!--<script src='bower_components/angularfire/dist/angularfire.min.js'></script>-->
+  <script src='https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js'></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <!--<script src='https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js'></script>-->
+  <script src='js/app.js'></script>
+  <script src='js/controllers/faveperformerscontroller.js'></script>
+  <script src='js/controllers/authController.js'></script>
+  <script src='js/controllers/friendnotifcontroller.js'></script>
+  <script src='js/controllers/homecontroller.js'></script>
+  <script src='js/controllers/localshowcontroller.js'></script>
+  <script src='js/controllers/thetweetscontroller.js'></script>
+  <script src='js/controllers/moviedatacontroller.js'></script>
+  <script src='js/controllers/menucontroller.js'></script>
+  <script src='js/factories/authFactory.js'></script>
+  <script src='js/factories/moviedataFactory.js'></script>
+  <script src='js/factories/artistFactory.js'></script>
+  <script src='js/factories/notificationFactory.js'></script>
+  <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+ 
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<div class='view-body'>
+  <div class='data-holder' ng-show='showListData'>
+    <h1 class='view-title'>To See List</h1>
+      <table class='table tosee-table'>
+      <thead class='table-header'>
+            <td>Title</td>
+            <td>Director</td>
+            <td>Delete</td>
+            <td>Edit</td>
+      </thead>
+      <tbody>
+        <tr ng-repeat='movie in movielisting' ng-if='!movie.seenstatus'>
+            <td>{{movie.title}}</td>
+            <td>{{movie.director}}</td>
+            <td><button type='button' class="btn btn-success" ng-click="deleteAMovie(movie)"><span class="glyphicon glyphicon-trash"></span></button></td>
+            <td><button type='button' class="btn btn-success" ng-click="showEditFieldsBtn(movie)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<div class='data-holder-m' ng-show='showEditFields'>
+  <p class='view-title'>Edit Movie Data</p>
+    <form role='form' class='style-form' novalidate='novalidate' name='editForm'>
+      <div class='form-group make-orange'>
+        <label class="">Title</label> <br>
+      </div>
+      <div>
+        <input id="title" class='form-control' type='text' ng-model='movie.title' ng-change="movielisting.$save(movie)" name="title" value='movie.title' />
+      </div>
+      <div class="form-group make-orange">
+        <label>Director</label> <br>
+      </div>
+      <div>
+        <input id="director" class='form-control' type='text' ng-model='movie.director' ng-change="movielisting.$save(movie)" name="director"/>
+      </div>
+      <div class="form-group make-orange">
+        <label>Theater</label> <br>
+      </div>
+      <div>
+        <input id="theater" class='form-control' type='text' ng-model='movie.theater' ng-change="movielisting.$save(movie)" name="theater"/>
+      </div>
+      <div class="form-group make-orange">
+        <label>Fellow Moviegoers</label> <br>
+      </div>
+      <div>
+        <input id="moviegoers" class='form-control' type='text' ng-model='movie.moviegoers' ng-change="movielisting.$save(movie)" name="moviegoers"/>
+      </div>
+      <div>
+        <label>
+          <input type="radio" ng-model='movie.seenstatus' ng-change="movielisting.$save(movie)" name="seenstatus" id="haveseen" ng-value='true'>
+            Have Seen
+        </label>
+        <label>
+          <input type="radio" ng-model='movie.seenstatus' ng-change="movielisting.$save(movie)" name="seenstatus" id="tosee" ng-value='false'>
+            To See
+        </label> <br>
+      </div>
+
+      <button class='btn btn-success'ng-click=''>Submit</button>
+    </form>
+  </div>
+</div>
+

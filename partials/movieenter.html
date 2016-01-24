@@ -1,0 +1,65 @@
+<div class='view-body'>
+  <div class='data-holder-enter'>
+  <h3 class='view-title'>Add a New Movie</h3>
+    <div>
+    <form role='form' class='style-form' novalidate='novalidate' ng-submit='addMovieData()' name='movieForm'>
+
+      <div class='form-group make-orange'>
+        <label class="">Title</label> <br>
+      </div>
+      <div>
+        <input id="title" class='form-control' type='text' ng-model='title' name="title"/>
+      </div>
+
+      <div class='form-group make-orange'>
+        <label class="">Director</label> <br>
+      </div>
+      <div>
+        <input id="director" class='form-control' type='text' ng-model='director' name="director" />
+      </div>
+
+      <div class='form-group make-orange'>
+        <label>Theater</label> <br>
+      </div>
+      <div>
+        <input id="theater" class='form-control' type='text' ng-model='theater' name="theater" ng-value="" />
+      </div>
+
+      <div class='form-group make-orange'>
+        <label>Fellow Moviegoers</label> <br>
+      </div>
+      <div>
+        <input id="moviegoers" class='form-control' type='text' ng-model='moviegoers' name="moviegoers"/>
+      </div>
+
+      <div class='form-group make-orange'>
+        <label>Date</label> <br>
+      </div>
+      <div>
+        <input id="date" class='form-control' type='text' ng-model='date' name="date"/>
+      </div>
+
+      <div class='form-group make-orange'>
+        <label>Response</label> <br>
+      </div>
+      <div>
+        <input id="response" class='form-control' type='text' ng-model='response' name="response"/>
+      </div>
+
+      <div>
+        <label>
+          <input type="radio" ng-model='seenstatus' name="seenstatus" id="haveseen" ng-value='true'>
+            Have Seen
+        </label> <br>
+        <label>
+          <input type="radio" ng-model='seenstatus' name="seenstatus" id="tosee" ng-value='false'>
+            To See
+        </label> <br>
+      </div>
+
+
+      <button type='submit'class='btn btn-success give-tenpx'>Submit</button>
+    </form>
+    </div>
+  </div>
+</div>

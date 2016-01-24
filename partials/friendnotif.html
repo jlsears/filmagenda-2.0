@@ -1,0 +1,15 @@
+<h1>Friend notification view</h1>
+<div>
+  <form role='form' novalidate='novalidate' ng-submit='sendNotif()' name='notifForm'>
+    <div class='form-group'>
+      <label class="">Phone Number</label> <br>
+      <input id="phoneNumber" type='text' ng-model='phoneNumber' name="phoneNumber"/>
+    </div>
+    <div>
+      <label class="">Your Message</label> <br>
+      <input id="messageContent" type='text' ng-model='messageContent' name="messageContent"/>
+    </div><br>
+
+    <button type='submit'class='btn btn-warning'>Submit</button>
+  </form>
+</div>

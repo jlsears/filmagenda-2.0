@@ -1,0 +1,453 @@
+body{
+  text-align: center;
+  background-color: #FF9912;
+  /*background-image: url('../images/orangewallpaper.jpg');*/
+}
+
+h3 {
+  color: #585858;
+}
+
+
+/****************************
+REGISTRATION
+****************************/
+
+.register-header {
+  color: #585858;
+}
+
+
+/****************************
+HOME PAGE
+****************************/
+
+#background-theater {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#background-theater img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.the-title {
+  height: 90px;
+  width: 380px;
+  background-color: #CF5300; opacity: 0.75; filter: alpha(opacity=50);
+  margin: 0 auto;
+  display: inline-block;
+  margin-top: -35%;
+  color: white;
+  border: 1px solid white;
+}
+
+.signing-in {
+  height: 35%;
+  width: 35%;
+  background-color: #FFFFFF; opacity: 0.75; filter: alpha(opacity=50);
+  margin: 0 auto;
+  display: inline-block;
+  margin-top: 2%;
+  padding-bottom: 15px;
+}
+
+.signing-in a {
+  color: #707070;
+}
+
+.signing-in a:hover {
+  color: #cc5500;
+  text-decoration: none;
+}
+
+.login-text {
+  color: #cc5500;
+}
+
+/****************************
+MENU PAGE
+****************************/
+
+.menu-body {
+  background-color: #080808;
+}
+
+#menu-theater {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#menu-theater img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.holder-div {
+  height: 600px;
+  width: 45%;
+  /*background-color: #FFFFFF; opacity: 0.75; filter: alpha(opacity=50);*/
+  /*position: absolute;*/
+  margin: 0 auto;
+  display: inline-block;
+  /*margin-top: 15%;*/
+  padding-bottom: 15px;
+  margin-top: 14%;
+  padding-left: 13%;
+}
+
+.lefty {
+  float: left;
+}
+
+.righty {
+  float: right;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: 0px;
+  position: relative;
+  color: white;
+}
+
+.box {
+  height: 180px;
+  width: 180px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  padding-top: 60px;
+  background-color: black; opacity: 0.45; filter: alpha(opacity=40);
+}
+
+.entering-row {
+  width: 580px;
+  margin-bottom: 30px;
+  text-align: justify;
+  padding-left: 15%;
+  border-bottom: #989898 1px solid;
+}
+
+.enter-data a {
+  color: #989898;
+}
+
+.enter-data a:hover {
+  text-decoration: none;
+  color: #FF9912;
+  background-color: black; opacity: 0.45; filter: alpha(opacity=40);
+}
+
+.this-menu a:hover {
+  text-decoration: none;
+  color: #FF9912;
+}
+
+.signing-out {
+  position: absolute;
+  left: 1900px;
+  bottom: 360px;
+  height: 90px;
+  width: 90px;
+  border-radius: 45px;
+  background-color: #fcd856;
+}
+
+.signing-out p {
+  padding: 20px;
+}
+
+.signing-out a {
+  color: white;
+}
+
+.signing-out a:hover {
+  text-decoration: none;
+  color: #cc5500;
+  font-weight: bold;
+}
+
+
+/*******************************
+BOXES WITH BACKGROUND IMAGES
+*******************************/
+.white-pop {
+  z-index: 2;
+}
+
+.box1 {
+  background-image: url('../images/box1.jpg');
+}
+
+.box2 {
+  background-image: url('../images/box2.jpg');
+}
+
+.box3 {
+  background-image: url('../images/box3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box4 {
+  background-image: url('../images/box4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box5 {
+  background-image: url('../images/box5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box6 {
+  background-image: url('../images/box6.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box7 {
+  background-image: url('../images/box7.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box8 {
+  background-image: url('../images/box8.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box9 {
+  background-image: url('../images/box9.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+img {
+  z-index: 1;
+}
+
+.box a {
+  color: white;
+  font-size: 18px;
+}
+
+
+/*******************
+NAVBAR
+*******************/
+
+.nav-container {
+  width: 75%;
+  margin: 0 auto;
+  display: inline-block;
+  background-color: #F0F0F0; opacity: 0.75; filter: alpha(opacity=75);
+  margin-left: 15%;
+}
+
+.fa-head {
+  margin-right: 20px;
+  font-size: 19px;
+}
+
+.head-links {
+  float: right;
+  padding-right: 25px;
+  font-size: 12px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #cc5500;
+  font-weight: bold;
+}
+
+.yfa p {
+  padding-top: 8px;
+  padding-left: 10px;
+}
+
+.size-that-glyph {
+  font-size: 25px;
+}
+
+/*******************
+HEADER
+*******************/
+
+#banner-photo {
+  background-image: url('../images/belcourt_banner.jpg');
+  height: 198px;
+  background-repeat: no-repeat;
+  background-size: initial;
+  border-bottom: 3px solid #DC4C18;
+  background-color: black;
+}
+
+#banner-photo div {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -48px;
+  width: 96px;
+  height: 96px;
+  background-color: white;
+  border-radius: 48px;
+  padding: 4px;
+  margin-top: 100px;
+}
+
+#banner-photo div p {
+  text-align: center;
+  width: 88px;
+  height: 88px;
+  background-color: #FFC957;
+  line-height: 88px;
+  border-radius: 44px;
+  font-size: 18px;
+  color: white;
+  font-family: 'bebas_neueregular';
+}
+
+.view-body {
+  /*padding-top: 30px;*/
+  background-color: #808080;
+  height: 900px;
+}
+
+.data-holder {
+  background-color: white;
+  width: 90%;
+  height: 800px;
+  display: inline-block;
+  background-color: white;
+  padding-top: 0px;
+}
+
+.data-holder-enter {
+  background-color: white;
+  width: 90%;
+  height: 800px;
+  display: inline-block;
+  background-color: white;
+  padding-top: 50px;
+}
+
+.data-holder-sm {
+  background-color: white;
+  width: 90%;
+  height: 450px;
+  display: inline-block;
+  background-color: white;
+  padding-top: 50px;
+}
+
+.data-holder-m {
+  background-color: white;
+  width: 90%;
+  height: 600px;
+  display: inline-block;
+  background-color: white;
+  padding-top: 50px;
+}
+
+.data-holder h1 {
+  padding-top: 45px;
+  padding-bottom: 30px;
+}
+
+.table-header {
+  font-weight: bold;
+}
+
+.haveseen-table {
+  width: 95%;
+  /*max-width: 100%;*/
+  margin-bottom: 20px;
+  margin: 0 auto;
+  display: inline-block;
+  margin-left: 15%;
+}
+
+.tosee-table {
+  width: 75%;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+.artist-table {
+  width: 75%;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+
+/*******************
+VIEW TITLE TEXT
+*******************/
+
+.view-title {
+  font-family: 'Raleway';
+}
+
+
+
+/*******************
+FORMS
+*******************/
+
+form-shorten {
+  width: 60%;
+  background-color: green;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.make-orange {
+  background-color: orange;
+  color: white;
+  padding-left: 2px;
+  border-radius: 2px;
+}
+
+.style-form {
+  display: inline-block;
+  width: 35%;
+  border: 2px #C0C0C0 solid;
+  text-align: left;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.orange-words {
+  color: orange;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.give-tenpx {
+  margin-top: 10px;
+}

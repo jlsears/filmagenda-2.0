@@ -1,0 +1,75 @@
+<div class='view-body'>
+  <div class='data-holder' ng-show='showListData'>
+  <h1 class='view-title'>Fave Artists</h1>
+  
+    <table class='table artist-table'>
+      <thead class='table-header'>
+            <td>Name</td>
+            <td>Artist Type</td>
+            <td>Delete</td>
+            <td>Edit</td>
+      </thead>
+      <tbody>
+        <tr ng-repeat='artist in artistlisting'>
+            <td>{{artist.name}}</td>
+            <td>{{artist.artist_type}}</td>
+            <td><button type='button' class="btn btn-success" ng-click="deleteAnArtist(artist)"><span class="glyphicon glyphicon-trash"></span></button></td>
+            <td><button type='button' class="btn btn-success" ng-click="showEditFieldsBtn(artist)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+        </tr>
+      </tobdy>
+    </table>
+  </div>
+
+  <div class='data-holder-m' ng-show='showEditFields'>
+    <h1 class='view-title'>Edit Artist</h1>
+      <form role='form' class='style-form' novalidate='novalidate' ng-submit='submitThis(artist)' name='editForm'>
+        <div class='form-group make-orange'>
+          <label class="">Title</label> <br>
+        </div>
+        <div>
+          <input id="name" class='form-control' type='text' ng-model='artist.name' ng-change="artistlisting.$save(artist)" name="name" value='artist.name' />
+        </div>
+        <div class='form-group make-orange'>
+          <label class="">Artist Type</label> <br>
+        </div>
+        <div>
+          <input id="artist_type" class='form-control' type='text' ng-model='artist.artist_type' ng-change="artistlisting.$save(artist)" name="artist_type"/>
+        </div>
+
+        <button type='submit'class='btn btn-success'>Submit</button>
+      </form>
+  </div>
+
+</div>
+
+
+<!-- <div ng-show='showListData'>
+  <h1>Fave Artists List</h1>
+  <div class='row' ng-repeat='artist in artistlisting'>
+    <div class="col-xs-5">{{artist.name}}</div>
+    <div class="col-xs-5">{{artist.artist_type}}</div>
+    <div class="col-xs-1">
+      <button type='button' ng-click="artistlisting.$remove(artist)">Delete</button>
+    </div>
+    <div class="col-xs-1">
+      <button type='button' ng-click="showEditFieldsBtn(artist)">Edit</button>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>
+
+<div ng-show='showEditFields'>
+<h1>Edit Artist Data</h1>
+  <form role='form' novalidate='novalidate' ng-submit='submitThis(artist)' name='editForm'>
+    <div class='form-group'>
+      <label class="">Title</label> <br>
+      <input id="name" type='text' ng-model='artist.name' ng-change="artistlisting.$save(artist)" name="name" value='artist.name' />
+    </div>
+    <div>
+      <label class="">Artist Type</label> <br>
+      <input id="artist_type" type='text' ng-model='artist.artist_type' ng-change="artistlisting.$save(artist)" name="artist_type"/>
+    </div>
+
+    <button type='submit'class='btn btn-warning'>Submit</button>
+  </form>
+</div> -->

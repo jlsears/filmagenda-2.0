@@ -1,0 +1,53 @@
+
+/***************************
+TO DO FACTORY
+***************************/
+
+app.factory('Todo', ['$http','API_URL', function ($http, API_URL) {
+    function addTodo(id, todo, cb) {
+      $http
+        .post(`${API_URL}/todos/${id}.json`, todo)
+        .success(cb);
+    }
+    function getMyTodos(id, cb) {
+      $http
+        .get(`${API_URL}/todos/${id}.json`)
+        .success(cb)
+        .error(function(data, error) { console.log(error); });
+    }
+  function getAll(cb) {
+    $http
+      .get(`${API_URL}/todo.json`)
+      .success(cb);
+  }
+    return {addTodo:addTodo, getMyTodos:getMyTodos, getAll:getAll};
+  }]);
+
+/***************************
+AUTHCONTROLLER.JS
+***************************/
+
+  app.controller('AuthCtrl', ['$scope', '$location', 'Auth', function($scope, $location, Auth){
+    $scope.login = function() {
+      Auth.login($scope.user.email, $scope.user.password, function() {
+        $location.path('/menu');
+        $scope.$apply();
+      });
+    };
+
+    $scope.register = function() {
+      Auth.register($scope.user.email, $scope.user.password, function() {
+        Auth.login($scope.user.email, $scope.user.password, function() {
+          $location.path('/menu');
+          $scope.$apply();
+        });
+      });
+    };
+
+    $scope.logout=function(){
+      Auth.logout(function() {
+        $location.path('/login');
+        $scope.$apply();
+      });
+    };
+  }]);

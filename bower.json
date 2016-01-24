@@ -1,0 +1,22 @@
+{
+  "name": "ng-weather",
+  "version": "0.0.0",
+  "authors": [
+    "Zoe Ames <zoeames@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "firebase": "~2.2.7",
+    "bootstrap": "~3.3.5",
+    "angularfire": "~1.1.1"
+  }
+}

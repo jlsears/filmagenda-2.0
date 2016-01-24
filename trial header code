@@ -1,0 +1,148 @@
+/********************
+Banner css
+********************/
+
+
+/****************************
+HEADER
+****************************/
+
+.header-container {
+
+}
+
+@media (min-width: 768px)
+.navbar {
+   border-radius: 0; 
+}
+
+.fashion-up {
+  margin-top: 60px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.to-right {
+  float: right;
+}
+
+.space {
+  margin-right: 80px;
+  font-size: 24px;
+}
+
+.spread-out {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#headerWrapper {
+  color: #D6D6D6;
+}
+
+#header {
+  position: relative;
+}
+
+.top-bar {
+  line-height: 45px;
+  position: relative;
+  padding: 20px 35px 10px 35px;
+}
+
+nav .top-bar {
+  background-color: white;
+  padding: 20px 35px 10px 35px;
+  color: #3a3a3a;
+}
+
+
+.top-bar ul {
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.top-bar ul li {
+  display: inline;
+  font-size: 20px;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #DC4C18;
+  font-size: 17px;
+  font-family: 'Roboto';
+}
+
+
+
+/*************************
+BANNER PHOTO
+**************************/
+
+#banner-photo {
+  /*margin-top: 17px;*/
+  background-image: url('../images/theater_cropped.jpg');
+  height: 308px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-bottom: 3px solid #DC4C18;
+  background-color: black;
+}
+
+#banner-photo span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -48px;
+  width: 96px;
+  height: 96px;
+  background-color: white;
+  border-radius: 48px;
+  padding: 4px;
+  /*margin-top: 255px;*/
+}
+
+
+
+/********************
+Banner html
+********************/
+
+  <div class="fashion-up">
+  <nav class="navbar navbar-default nav-container">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse nav-dothis" id="bs-example-navbar-collapse-1">
+      <div class="space">
+        <ul class="nav navbar-nav space">
+          <li><a href="#">Movie Agenda <span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="nav navbar-nav to-right spread-out">
+          <li><a href="/movie/">Enter <span class="sr-only">(current)</span></a></li>
+          <li><a href="/user/profile">Profile <span class="sr-only">(current)</span></a></li>
+          <li><a href="/movie/list">List <span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
+      <form class="navbar-form navbar-left" role="search">
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+
+  <!-- </div> -->
+  <div id="banner-photo">
+
+  </div>
