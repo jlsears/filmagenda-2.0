@@ -7,19 +7,20 @@ $(document).ready(function() {
 
     var button = $("#search");
 
-    var ipZip = $.get("http://ipinfo.io", function(response) {
-            console.log(response.postal);
-            $("#location").val(response.postal);
-        }, "jsonp");
+/*    var ipZip = $.get("http://ipinfo.io", function(response) {
+            console.log(response);
+            $("#location").val(response);
+        }, "jsonp");*/
 
         function findArtist(e) {
         e.preventDefault();
+        console.log("findArtist called!!!");
         //var theZip = $("#location").val();
         var suffix = ".json";
-        var base_url = "https://api.themoviedb.org/3/movie/550?api_key=e4c0718991da519b470bbfa0660756fc";
-          console.log(base_url + theZip + suffix);
+        var base_url = "https://api.themoviedb.org/3/search/person?api_key=e4c0718991da519b470bbfa0660756fc&query=tilda?swinton";
+          console.log(base_url);
         $.ajax({
-            url: base_url + theZip + suffix,
+            url: base_url,
             dataType: "jsonp",
             success: function(data){
                 console.log(data);
@@ -32,7 +33,15 @@ $(document).ready(function() {
 
     }
 
-    // API call retrieving partial data: https://api.themoviedb.org/3/find/nm0842770?external_source=imdb_id&api_key=e4c0718991da519b470bbfa0660756fc
+    // API call for general search:
+    // https://api.themoviedb.org/3/search/movie?api_key=###&query=batman
+    // https://api.themoviedb.org/3/search/person?api_key=e4c0718991da519b470bbfa0660756fc&query=tilda?swinton
+
+    // API call retrieving partial data including performer's API id: 
+    // https://api.themoviedb.org/3/find/nm0842770?external_source=imdb_id&api_key=e4c0718991da519b470bbfa0660756fc
+
+    // API call to get full project info: 
+    // http://api.themoviedb.org/3/person/3063/combined_credits?api_key=e4c0718991da519b470bbfa0660756fc
 
     
 button.click(findArtist);

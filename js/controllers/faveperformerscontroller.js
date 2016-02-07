@@ -30,6 +30,21 @@
       $location.path('/menu');
     };
 
+    $scope.findArtist = function() {
+        console.log("findArtist called!!!");
+        var suffix = ".json";
+        var base_url = "https://api.themoviedb.org/3/search/person?api_key=inserthere&query=tilda?swinton";
+          console.log(base_url);
+        $.ajax({
+            url: base_url,
+            dataType: "jsonp",
+            success: function(data){
+                console.log(data);
+                $("#artistproject").append(data);
+              }
+         })   
+    };
+
 
     $scope.showListData = true;
 
