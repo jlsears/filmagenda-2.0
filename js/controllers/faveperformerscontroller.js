@@ -33,7 +33,9 @@
     $scope.findArtist = function() {
         console.log("findArtist called!!!");
         var suffix = ".json";
+        var getArtistId = 0;
         var base_url = "https://api.themoviedb.org/3/search/person?api_key=inserthere&query=tilda?swinton";
+        var second_url = "http://api.themoviedb.org/3/person/3063/combined_credits?api_key=inserthere";
           console.log(base_url);
         $.ajax({
             url: base_url,
@@ -41,9 +43,25 @@
             success: function(data){
                 console.log("printing data again!!");
                 console.log(data);
-                $("#artistproject").append("Here's some data: " + data.results[0].id);
+                getArtistId = data.results[0].id;
+                $("#artistproject").append("Here's some data: " + getArtistId);
+
+        $.ajax({
+            url: second_url,
+            dataType: "jsonp",
+            success: function(moredata){
+                console.log("printing data again!!");
+                console.log(moredata);
+                getTitle = moredata.cast[0].original_title;
+                console.log("Title here: " + getTitle)
+                $("#artistproject").append("Title data here: " + getTitle);
+
               }
-         })   
+         })  
+
+
+              }
+         })  
     };
 
 
