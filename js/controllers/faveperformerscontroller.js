@@ -39,8 +39,9 @@
             url: base_url,
             dataType: "jsonp",
             success: function(data){
+                console.log("printing data again!!");
                 console.log(data);
-                $("#artistproject").append(data);
+                $("#artistproject").append("Here's some data: " + data.results[0].id);
               }
          })   
     };
