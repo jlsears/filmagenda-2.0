@@ -44,24 +44,26 @@
                 console.log("printing data again!!");
                 console.log(data);
                 getArtistId = data.results[0].id;
-                $("#artistproject").append("Here's some data: " + getArtistId);
+                //$("#artistproject").append("Here's some data: " + getArtistId);
 
         $.ajax({
             url: second_url,
             dataType: "jsonp",
             success: function(moredata){
-                console.log("printing data again!!");
                 console.log(moredata);
-                getTitle = moredata.cast[0].original_title;
+                var castData = moredata.cast[0].original_title;
+                var castLength = moredata.cast.length;
+                console.log("the array length: " + castLength);
+                console.log("data at index 0: " + castData);
+                var lastItem = castLength - 1;
+                console.log("castLength - 1: " + lastItem);
+                var getTitle = moredata.cast[lastItem].original_name;
                 console.log("Title here: " + getTitle)
                 $("#artistproject").append("Title data here: " + getTitle);
-
               }
-         })  
-
-
-              }
-         })  
+            })  
+          }
+       })  
     };
 
 
