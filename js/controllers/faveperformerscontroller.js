@@ -52,22 +52,20 @@
             success: function(moredata){
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
-                var castLength = moredata.cast.length;
-                var lastItem = castLength - 1;
+                var lastItem = moredata.cast.length - 1;
                 var getTitle1 = moredata.cast[lastItem].title;
                 var getTitle2 = moredata.cast[lastItem].original_name;
 
                 if (getTitle1) {
-                  $("#artistproject").append("Title data here: " + getTitle1);
-
+                  $("#artistproject").append(getTitle1);
                 } else {
-                  $("#artistproject").append("Title data here: " + getTitle2);                  
+                  $("#artistproject").append(getTitle2);                  
                 }
 
-                console.log("the array length: " + castLength);
                 console.log("data at index 0: " + castData);
                 console.log("castLength - 1: " + lastItem);
-                console.log("Title here: " + getTitle)
+                console.log("First title possibility here: " + getTitle1);
+                console.log("Second title possibility here: " + getTitle2);
               }
             })  
           }
