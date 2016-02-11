@@ -30,8 +30,14 @@
       $location.path('/menu');
     };
 
-    $scope.findArtist = function() {
+    $scope.findArtist = function(artist) {
         console.log("findArtist called!!!");
+        console.log("Artist name captured: " + $scope.name);
+        $scope.artist = artist.name;
+        console.log("artist name?: " + $scope.artist);
+        var newName = $scope.artist.replace(/ /g, "?");
+        console.log("get name api call ready: " + newName);
+
         var suffix = ".json";
         var getArtistId = 0;
         var base_url = "https://api.themoviedb.org/3/search/person?api_key=inserthere&query=tilda?swinton";
