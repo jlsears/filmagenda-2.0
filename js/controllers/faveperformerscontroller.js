@@ -32,7 +32,6 @@
 
     $scope.findArtist = function(artist) {
         console.log("findArtist called!!!");
-        console.log("Artist name captured: " + $scope.name);
         $scope.artist = artist.name;
         console.log("artist name?: " + $scope.artist);
         var newName = $scope.artist.replace(/ /g, "?");
@@ -40,20 +39,23 @@
 
         var suffix = ".json";
         var getArtistId = 0;
-        var base_url = "https://api.themoviedb.org/3/search/person?api_key=inserthere&query=tilda?swinton";
-        var second_url = "http://api.themoviedb.org/3/person/3063/combined_credits?api_key=inserthere";
-          console.log(base_url);
+        var base_url = "https://api.themoviedb.org/3/search/person?api_key=inserthere&query=";
+        var finalBaseUrl = base_url + newName;
+        var second_url_Pt1 = "http://api.themoviedb.org/3/person/";
+        var second_url_Pt2 = "/combined_credits?api_key=inserthere";
+          console.log(finalBaseUrl);
         $.ajax({
-            url: base_url,
+            url: finalBaseUrl,
             dataType: "jsonp",
             success: function(data){
                 console.log("printing data again!!");
                 console.log(data);
                 getArtistId = data.results[0].id;
+                console.log("getting the id?: " + getArtistId);
                 //$("#artistproject").append("Here's some data: " + getArtistId);
 
         $.ajax({
-            url: second_url,
+            url: second_url_Pt1 + getArtistId + second_url_Pt2,
             dataType: "jsonp",
             success: function(moredata){
                 console.log(moredata);
@@ -62,10 +64,10 @@
                 var getTitle1 = moredata.cast[lastItem].title;
                 var getTitle2 = moredata.cast[lastItem].original_name;
 
-                if (getTitle1) {
-                  $("#artistproject").append(getTitle1);
-                } else {
+                if (typeof getTitle1 === 'undefined') {
                   $("#artistproject").append(getTitle2);                  
+                } else {
+                  $("#artistproject").append(getTitle1);
                 }
 
                 console.log("data at index 0: " + castData);
