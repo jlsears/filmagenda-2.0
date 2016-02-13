@@ -13,7 +13,8 @@
     $scope.addArtistData = function() {
       artistListing.$add({
         name: $scope.name,
-        artist_type: $scope.artist_type
+        artist_type: $scope.artist_type,
+        most_recent: 'placeholder'
       });
       $location.path('/menu');
       console.log('artist data added!!');
@@ -57,7 +58,7 @@
         $.ajax({
             url: second_url_Pt1 + getArtistId + second_url_Pt2,
             dataType: "jsonp",
-            success: function(moredata){
+            success: function(moredata, artist){
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
                 var lastItem = moredata.cast.length - 1;
@@ -65,9 +66,15 @@
                 var getTitle2 = moredata.cast[lastItem].original_name;
 
                 if (typeof getTitle1 === 'undefined') {
-                  $("#artistproject").append(getTitle2);                  
+                  $("#artistproject").append(getTitle2);
+                  artistListing.$save({
+                    most_recent: getTitle2
+                  });                  
                 } else {
                   $("#artistproject").append(getTitle1);
+                  artistListing.$save({
+                    most_recent: getTitle1
+                  });
                 }
 
                 console.log("data at index 0: " + castData);

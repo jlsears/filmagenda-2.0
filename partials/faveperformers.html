@@ -16,7 +16,7 @@
             <td>{{artist.name}}</td>
             <td>{{artist.artist_type}}</td>
             <td id="artistproject"></td>
-            <td><button type='button' id="search" ng-click="findArtist(artist)">Latest</button></td>
+            <td><button type='button' id="search" value='artist.most_recent' ng-change="artistlisting.$save(artist)" ng-click="findArtist(artist)">Latest</button></td>
             <td><button type='button' class="btn btn-success" ng-click="deleteAnArtist(artist)"><span class="glyphicon glyphicon-trash"></span></button></td>
             <td><button type='button' class="btn btn-success" ng-click="showEditFieldsBtn(artist)"><span class="glyphicon glyphicon-pencil"></span></button></td>
         </tr>
