@@ -32,8 +32,17 @@
     };
 
     $scope.findArtist = function(artist) {
+    function newProject(thisOne) {
+      artistListing.$save({
+        most_recent: thisOne
+      });
+      console.log('We are at least hitting the function for: ' + thisOne);
+    };
         console.log("findArtist called!!!");
         $scope.artist = artist.name;
+        //var captureArtist = artist;
+        var getTitle1;
+        var getTitle2;
         console.log("artist name?: " + $scope.artist);
         var newName = $scope.artist.replace(/ /g, "?");
         console.log("get name api call ready: " + newName);
@@ -62,29 +71,36 @@
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
                 var lastItem = moredata.cast.length - 1;
-                var getTitle1 = moredata.cast[lastItem].title;
-                var getTitle2 = moredata.cast[lastItem].original_name;
+                getTitle1 = moredata.cast[lastItem].title;
+                getTitle2 = moredata.cast[lastItem].original_name;
 
                 if (typeof getTitle1 === 'undefined') {
                   $("#artistproject").append(getTitle2);
-                  artistListing.$save({
+                  newProject(getTitle2);
+/*                  artistListing.$save({
                     most_recent: getTitle2
                   });                  
-                } else {
+*/                } else {
                   $("#artistproject").append(getTitle1);
-                  artistListing.$save({
+                  newProject(getTitle1);
+/*                  artistListing.$save({
                     most_recent: getTitle1
                   });
-                }
+*/                }
 
-                console.log("data at index 0: " + castData);
-                console.log("castLength - 1: " + lastItem);
+                //console.log("data at index 0: " + castData);
+                //console.log("castLength - 1: " + lastItem);
                 console.log("First title possibility here: " + getTitle1);
                 console.log("Second title possibility here: " + getTitle2);
               }
-            })  
+            })
+              
           }
-       })  
+       });  
+      artistListing.$save({
+        most_recent: getTitle1
+      });
+      console.log("final title: " + getTitle1);
     };
 
 
