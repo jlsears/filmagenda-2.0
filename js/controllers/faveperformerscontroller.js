@@ -64,7 +64,7 @@
                 getArtistId = data.results[0].id;
                 console.log("getting the id?: " + getArtistId);
                 //$("#artistproject").append("Here's some data: " + getArtistId);
-          $http.jsonp(second_url_Pt1 + getArtistId + second_url_Pt2).success(function(moredata){
+          $http.jsonp(second_url_Pt1 + getArtistId + second_url_Pt2 + "&jsoncallback=JSON_CALLBACK").success(function(moredata){
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
                 var lastItem = moredata.cast.length - 1;
