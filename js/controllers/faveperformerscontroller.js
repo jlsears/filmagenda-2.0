@@ -1,4 +1,4 @@
-  app.controller('PerformerCtrl', ['$rootScope', '$scope', '$http','$location', '$firebaseArray', function ($rootScope, $scope, $http, $location, $firebaseArray){
+  app.controller('PerformerCtrl', ['$rootScope', '$scope', '$location', '$firebaseArray', function ($rootScope, $scope, $location, $firebaseArray){
 
     var id = $rootScope.auth.uid.replace(':', '%3A');
     
@@ -36,10 +36,9 @@
       artistListing.$save({
         most_recent: thisOne
       });
-      //console.log('We are at least hitting the function for: ' + thisOne);
-      //console.log('The artist for this API call is: ' + artist);
+      console.log('We are at least hitting the function for: ' + thisOne);
     };
-        console.log("findArtist called for this artist: " + artist);
+        console.log("findArtist called!!!");
         $scope.artist = artist.name;
         //var captureArtist = artist;
         var getTitle1;
@@ -64,27 +63,38 @@
                 getArtistId = data.results[0].id;
                 console.log("getting the id?: " + getArtistId);
                 //$("#artistproject").append("Here's some data: " + getArtistId);
-          $http.jsonp(second_url_Pt1 + getArtistId + second_url_Pt2).success(function(moredata){
+
+        $.ajax({
+            url: second_url_Pt1 + getArtistId + second_url_Pt2,
+            dataType: "jsonp",
+            success: function(moredata, artist){
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
                 var lastItem = moredata.cast.length - 1;
-                $scope.getTitle1 = moredata.cast[lastItem].title;
-                $scope.getTitle2 = moredata.cast[lastItem].original_name;
+                getTitle1 = moredata.cast[lastItem].title;
+                getTitle2 = moredata.cast[lastItem].original_name;
 
                 if (typeof getTitle1 === 'undefined') {
-                  $("#artistproject").append($scope.getTitle2);
-                  artistListing.$save({
-                    most_recent: $scope.getTitle2
-                  }); 
-                  //$scope.$digest();                 
-                } else {
-                  $("#artistproject").append($scope.getTitle1);
-                  artistListing.$save({
-                    most_recent: $scope.getTitle1
+                  $("#artistproject").append(getTitle2);
+                  newProject(getTitle2);
+/*                  artistListing.$save({
+                    most_recent: getTitle2
+                  });                  
+*/                } else {
+                  $("#artistproject").append(getTitle1);
+                  newProject(getTitle1);
+/*                  artistListing.$save({
+                    most_recent: getTitle1
                   });
-                  //$scope.$digest();
-                }            
-            })             
+*/                }
+
+                //console.log("data at index 0: " + castData);
+                //console.log("castLength - 1: " + lastItem);
+                console.log("First title possibility here: " + getTitle1);
+                console.log("Second title possibility here: " + getTitle2);
+              }
+            })
+              
           }
        });  
       artistListing.$save({
@@ -105,7 +115,6 @@
       $scope.showEditFields = true; 
       $scope.showListData = false;
       $scope.artist = artist;
-      console.log("Edit button pushed for artist: " + artist);
     }
 
     $scope.submitThis = function(artist) {
