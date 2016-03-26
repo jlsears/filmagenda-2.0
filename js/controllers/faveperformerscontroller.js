@@ -6,6 +6,8 @@
 
     var artistListing = $firebaseArray(artistRef);
 
+    var theProject = "";
+
     //movieRef.$bindTo($scope, "movieinfo");
 
     $scope.artistlisting = artistListing;
@@ -32,13 +34,13 @@
     };
 
     $scope.findArtist = function(artist) {
-    function newProject(thisOne) {
+/*    function newProject(thisOne) {
       artistListing.$save({
         most_recent: thisOne
       });
       console.log('We are at least hitting the function for: ' + thisOne);
     };
-        console.log("findArtist called!!!");
+*/        console.log("findArtist called!!!");
         $scope.artist = artist.name;
         //var captureArtist = artist;
         var getTitle1;
@@ -53,6 +55,7 @@
         var finalBaseUrl = base_url + newName;
         var second_url_Pt1 = "http://api.themoviedb.org/3/person/";
         var second_url_Pt2 = "/combined_credits?api_key=inserthere";
+        //var theProject;
           console.log(finalBaseUrl);
         $.ajax({
             url: finalBaseUrl,
@@ -76,31 +79,25 @@
 
                 if (typeof getTitle1 === 'undefined') {
                   $("#artistproject").append(getTitle2);
-                  newProject(getTitle2);
-/*                  artistListing.$save({
-                    most_recent: getTitle2
-                  });                  
-*/                } else {
+                 theProject = getTitle2;
+                    console.log("Saving getTitle2 to theProject: " + getTitle2);
+                    console.log("And the type of getTitle2 is: " + typeof getTitle2);
+                } else {
                   $("#artistproject").append(getTitle1);
-                  newProject(getTitle1);
-/*                  artistListing.$save({
-                    most_recent: getTitle1
-                  });
-*/                }
-
-                //console.log("data at index 0: " + castData);
-                //console.log("castLength - 1: " + lastItem);
+                  theProject = getTitle1;
+                    console.log("Saving getTitle1 to theProject: " + getTitle1)
+                }
                 console.log("First title possibility here: " + getTitle1);
                 console.log("Second title possibility here: " + getTitle2);
               }
             })
-              
           }
        });  
-      artistListing.$save({
-        most_recent: getTitle1
-      });
-      console.log("final title: " + getTitle1);
+        console.log("Look, theProject holds a variable and it's: " + theProject);
+            artistListing.$save({
+              most_recent: theProject
+          }); 
+       console.log("Did we save theProject successfully? " + theProject);
     };
 
 
