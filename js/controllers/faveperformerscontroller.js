@@ -78,12 +78,12 @@
                 getTitle2 = moredata.cast[lastItem].original_name;
 
                 if (typeof getTitle1 === 'undefined') {
-                  $("#artistproject").append(getTitle2);
+                  $("#artistproject").html(getTitle2);
                  theProject = getTitle2;
                     console.log("Saving getTitle2 to theProject: " + getTitle2);
                     console.log("And the type of getTitle2 is: " + typeof getTitle2);
                 } else {
-                  $("#artistproject").append(getTitle1);
+                  $("#artistproject").html(getTitle1);
                   theProject = getTitle1;
                     console.log("Saving getTitle1 to theProject: " + getTitle1)
                 }
