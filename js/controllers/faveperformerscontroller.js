@@ -58,6 +58,11 @@
         //var theProject;
           console.log(finalBaseUrl);
 
+
+          function saveProject(callback) {
+
+          }
+
           // First API call: to find this artist's ID
         $.ajax({
             url: finalBaseUrl,
@@ -92,15 +97,16 @@
                 } else {
                   // This means the project is a film
                   $("#artistproject").html(getTitle1);
-                  theProject = getTitle1;
-                    console.log("Saving getTitle1 to theProject: " + getTitle1)
+                  //theProject = getTitle1;
+                    //console.log("Saving getTitle1 to theProject: " + getTitle1)
+                    saveProject(projFirebase);
                 }
                 console.log("First title possibility here: " + getTitle1);
                 console.log("Second title possibility here: " + getTitle2);
               }
-            })
+            }) // end second ajax call
           }
-       });  
+       });  // end initial ajax call
         console.log("Look, theProject holds a variable and it's: " + theProject);
             artistListing.$save({
               most_recent: theProject
