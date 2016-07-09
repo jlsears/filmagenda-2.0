@@ -57,6 +57,8 @@
         var second_url_Pt2 = "/combined_credits?api_key=inserthere";
         //var theProject;
           console.log(finalBaseUrl);
+
+          // First API call: to find this artist's ID
         $.ajax({
             url: finalBaseUrl,
             dataType: "jsonp",
@@ -67,6 +69,7 @@
                 console.log("getting the id?: " + getArtistId);
                 //$("#artistproject").append("Here's some data: " + getArtistId);
 
+        // Second API call: to retrieve that artist's info 
         $.ajax({
             url: second_url_Pt1 + getArtistId + second_url_Pt2,
             dataType: "jsonp",
@@ -74,15 +77,20 @@
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
                 var lastItem = moredata.cast.length - 1;
+
+                // Will be present if the object is a film
                 getTitle1 = moredata.cast[lastItem].title;
+                // Will be present if the object is a TV show
                 getTitle2 = moredata.cast[lastItem].original_name;
 
+                // This means the project is a TV show
                 if (typeof getTitle1 === 'undefined') {
                   $("#artistproject").html(getTitle2);
                  theProject = getTitle2;
                     console.log("Saving getTitle2 to theProject: " + getTitle2);
                     console.log("And the type of getTitle2 is: " + typeof getTitle2);
                 } else {
+                  // This means the project is a film
                   $("#artistproject").html(getTitle1);
                   theProject = getTitle1;
                     console.log("Saving getTitle1 to theProject: " + getTitle1)

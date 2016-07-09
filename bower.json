@@ -1,8 +1,8 @@
 {
-  "name": "ng-weather",
-  "version": "0.0.0",
+  "name": "filmagenda",
+  "version": "2.0.0",
   "authors": [
-    "Zoe Ames <zoeames@gmail.com>"
+    "Jen Sears <jen.lauren.sears@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
