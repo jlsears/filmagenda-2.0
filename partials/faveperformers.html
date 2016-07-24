@@ -12,7 +12,7 @@
             <td>Edit</td>
       </thead>
       <tbody>
-        <tr ng-repeat='artist in artistlisting'>
+        <tr ng-repeat='artist in artistlisting track by $index'>
             <td>{{artist.name}}</td>
             <td>{{artist.artist_type}}</td>
             <td id="artistproject">{{artist.most_recent}}</td>

@@ -33,18 +33,51 @@
       $location.path('/menu');
     };
 
-    $scope.findArtist = function(artist) {
-/*    function newProject(thisOne) {
-      artistListing.$save({
-        most_recent: thisOne
+    $scope.saveFire = function(artist) {
+      //console.log("if passing data inside saveFire it's here: " + JSON.stringify(respTitle));
+      //var lastItem2 = respTitle.cast.length - 1;
+
+      //console.log("hit saveFire function itself and getTitle2 is: " + respTitle.cast[lastItem2].original_name);
+      //console.log("and aritstListing is: " + JSON.stringify(artistListing));
+      console.log("getTitle2 with scope in play shows as: " + $scope.getTitle2);
+      console.log("artist in saveFire is: " + JSON.stringify($scope.artist));
+      console.log("artistListing in saveFire is: " + JSON.stringify(artistListing));
+
+      //$scope.artist = artist;
+      $scope.most_recent = $scope.getTitle2;
+      $scope.artist_type = 'Experiment this';
+
+      console.log("artistRef is: " + artistRef);
+      var item = artistListing.$getRecord($scope.artist.$id);
+
+      console.log("artistListing id is: " + $scope.artist.$id);
+      console.log("artistListing name is: " + $scope.artist.name);
+      console.log("artistListing most_recent is: " + $scope.artist.most_recent);
+      console.log("and again, getTitle2 is: " + $scope.getTitle2);
+
+      //item.most_recent = $scope.getTitle2;
+      item.artist_type = 'Experiment this';
+
+      $scope.artist.most_recent = $scope.getTitle2
+
+      artistListing.$save(item).then(function() {
+        console.log("this the item save function");
       });
-      console.log('We are at least hitting the function for: ' + thisOne);
-    };
-*/        console.log("findArtist called!!!");
+      
+      console.log("something happened with the artist in saveFire, maybe?");
+    }; // end saveFire
+
+
+    $scope.findArtist = function(artist) {
+      console.log("findArtist called!!!");
+        console.log("aritstListing at this juncture: " + JSON.stringify(artistListing));
         $scope.artist = artist.name;
         //var captureArtist = artist;
         var getTitle1;
         var getTitle2;
+        var titleUse = "unchanged";
+        var titleinfo = "not changed";
+
         console.log("artist name?: " + $scope.artist);
         var newName = $scope.artist.replace(/ /g, "?");
         console.log("get name api call ready: " + newName);
@@ -58,13 +91,8 @@
         //var theProject;
           console.log(finalBaseUrl);
 
-
-          function saveProject(callback) {
-
-          }
-
           // First API call: to find this artist's ID
-        $.ajax({
+        var getAll = $.ajax({
             url: finalBaseUrl,
             dataType: "jsonp",
             success: function(data){
@@ -75,42 +103,55 @@
                 //$("#artistproject").append("Here's some data: " + getArtistId);
 
         // Second API call: to retrieve that artist's info 
-        $.ajax({
+        var getAll2 = $.ajax({
             url: second_url_Pt1 + getArtistId + second_url_Pt2,
             dataType: "jsonp",
-            success: function(moredata, artist){
+            success: function(moredata){
                 console.log(moredata);
                 var castData = moredata.cast[0].original_title;
                 var lastItem = moredata.cast.length - 1;
 
                 // Will be present if the object is a film
-                getTitle1 = moredata.cast[lastItem].title;
+                $scope.getTitle1 = moredata.cast[lastItem].title;
                 // Will be present if the object is a TV show
-                getTitle2 = moredata.cast[lastItem].original_name;
+                $scope.getTitle2 = moredata.cast[lastItem].original_name;
+                console.log("getTitle2 is decreed: " + $scope.getTitle2);
 
                 // This means the project is a TV show
                 if (typeof getTitle1 === 'undefined') {
+                  titleUse = "second";
+                  titleinfo = moredata.cast[lastItem].original_name;
+                  $scope.artist = artist;
+                  $scope.most_recent = titleinfo;
+                  $("#artistproject").empty().append(titleinfo);
+                  artistListing.$save({
+                    most_recent: titleinfo
+                  });
+
                   $("#artistproject").html(getTitle2);
-                 theProject = getTitle2;
-                    console.log("Saving getTitle2 to theProject: " + getTitle2);
-                    console.log("And the type of getTitle2 is: " + typeof getTitle2);
+
                 } else {
+
+                  titleUse = "first";
+                  updateTitleUse(titleUse);
+                  saveFire(getTitle1);
                   // This means the project is a film
                   $("#artistproject").html(getTitle1);
                   //theProject = getTitle1;
                     //console.log("Saving getTitle1 to theProject: " + getTitle1)
-                    saveProject(projFirebase);
+                    console.log("Hit else statement for getTitle1 scenario");
+                    saveProject(saveFire);
                 }
-                console.log("First title possibility here: " + getTitle1);
-                console.log("Second title possibility here: " + getTitle2);
-              }
-            }) // end second ajax call
+              },
+            })
+
+            getAll2.then($scope.saveFire);
+              //saveFire(titleinfo);
+            //.then(saveProject(saveFire)) // end second ajax call
+
           }
        });  // end initial ajax call
-        console.log("Look, theProject holds a variable and it's: " + theProject);
-            artistListing.$save({
-              most_recent: theProject
-          }); 
+
        console.log("Did we save theProject successfully? " + theProject);
     };
 
@@ -129,6 +170,7 @@
     }
 
     $scope.submitThis = function(artist) {
+      console.log("artistListing for editing purposes: " + JSON.stringify(artistListing));
       artistListing.$save({
         name: $scope.name,
         artist_type: $scope.artist_type
