@@ -40,7 +40,7 @@
 
       var item = artistListing.$getRecord($scope.artist.$id);
 
-      item.artist_type = 'resetting now';
+      item.artist_type = 'more resetting';
 
       $scope.artist.most_recent = $scope.getTitle2
 
@@ -56,7 +56,7 @@
       $scope.artist = artist.name;
       var getTitle1;
       var getTitle2;
-      var titleUse = "unchanged";
+      //var titleUse = "unchanged";
       var titleinfo = "not changed";
 
       var newName = $scope.artist.replace(/ /g, "?");
@@ -90,19 +90,12 @@
 
               // This means the project is a TV show
               if (typeof getTitle1 === 'undefined') {
-                titleUse = "second";
                 titleinfo = moredata.cast[lastItem].original_name;
                 $scope.artist = artist;
                 $scope.most_recent = titleinfo;
-                $("#artistproject").empty().append(titleinfo);
-                artistListing.$save({
-                  most_recent: titleinfo
-                });
-
-                $("#artistproject").html(getTitle2);
 
               } else {
-                  // project is a film scenario here
+                //project is a film scenario here                 
               }
             },
           })
