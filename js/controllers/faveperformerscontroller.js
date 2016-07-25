@@ -40,13 +40,12 @@
 
       var item = artistListing.$getRecord($scope.artist.$id);
 
-      item.artist_type = 'more resetting';
+      item.artist_type = 'experimenting';
 
       $scope.artist.most_recent = $scope.getTitle2
 
-      artistListing.$save(item).then(function() {
-        console.log("hitting the item save function");
-      });
+      artistListing.$save(item);
+
     }; // end saveFire
 
 
