@@ -16,7 +16,8 @@
       artistListing.$add({
         name: $scope.name,
         artist_type: $scope.artist_type,
-        most_recent: 'placeholder'
+        most_recent: 'placeholder',
+        media_type: 'placeholder2'
       });
       $location.path('/menu');
       console.log('artist data added!!');
@@ -43,6 +44,7 @@
       item.artist_type = 'experimenting';
 
       $scope.artist.most_recent = $scope.getTitle2
+      $scope.artist.media_type = $scope.format_type
 
       artistListing.$save(item);
 
@@ -55,6 +57,7 @@
       $scope.artist = artist.name;
       var getTitle1;
       var getTitle2;
+      var format_type;
       //var titleUse = "unchanged";
       var titleinfo = "not changed";
 
@@ -81,11 +84,16 @@
           success: function(moredata){
               var castData = moredata.cast[0].original_title;
               var lastItem = moredata.cast.length - 1;
+              console.log("artist: " + JSON.stringify(artist.name));
+              console.log("the moredata: " + JSON.stringify(moredata));
+              console.log("media type: " + JSON.stringify(moredata.cast[lastItem].media_type));
+              console.log("the lastItem: " + lastItem);
 
               // Will be present if the object is a film
               $scope.getTitle1 = moredata.cast[lastItem].title;
               // Will be present if the object is a TV show
               $scope.getTitle2 = moredata.cast[lastItem].original_name;
+              $scope.format_type = moredata.cast[lastItem].media_type;
 
               // This means the project is a TV show
               if (typeof getTitle1 === 'undefined') {
