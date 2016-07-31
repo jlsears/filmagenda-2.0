@@ -36,15 +36,15 @@
 
     $scope.saveFire = function(artist) {
 
-      $scope.most_recent = $scope.getTitle2;
+      $scope.most_recent = $scope.getTitle1;
       $scope.artist_type = 'Experiment this';
 
       var item = artistListing.$getRecord($scope.artist.$id);
 
       item.artist_type = 'experimenting';
 
-      $scope.artist.most_recent = $scope.getTitle2
-      $scope.artist.media_type = $scope.format_type
+      $scope.artist.most_recent = $scope.getTitle1
+      $scope.artist.media_type = $scope.format_type1
 
       artistListing.$save(item);
 
@@ -58,6 +58,7 @@
       var getTitle1;
       var getTitle2;
       var format_type;
+      var format_type1;
       //var titleUse = "unchanged";
       var titleinfo = "not changed";
 
@@ -97,7 +98,7 @@
 
               // Will be present if the object is a film
               $scope.getTitle1 = moredata.crew[lastItem2].title;
-
+              $scope.format_type1 = moredata.crew[lastItem2].media_type;
 
               // Will be present if the object is a TV show
               $scope.getTitle2 = moredata.cast[lastItem].original_name;
