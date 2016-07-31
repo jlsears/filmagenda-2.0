@@ -82,15 +82,23 @@
           url: second_url_Pt1 + getArtistId + second_url_Pt2,
           dataType: "jsonp",
           success: function(moredata){
+
+              // cast variables
               var castData = moredata.cast[0].original_title;
+
               var lastItem = moredata.cast.length - 1;
+              var lastItem2 = moredata.crew.length - 1;
+
               console.log("artist: " + JSON.stringify(artist.name));
               console.log("the moredata: " + JSON.stringify(moredata));
-              console.log("media type: " + JSON.stringify(moredata.cast[lastItem].media_type));
-              console.log("the lastItem: " + lastItem);
+              console.log("crew title: " + JSON.stringify(moredata.crew[lastItem2].title));
+              console.log("crew media type: " + JSON.stringify(moredata.crew[lastItem2].media_type));
+              console.log("the lastItem2: " + lastItem2);
 
               // Will be present if the object is a film
-              $scope.getTitle1 = moredata.cast[lastItem].title;
+              $scope.getTitle1 = moredata.crew[lastItem2].title;
+
+
               // Will be present if the object is a TV show
               $scope.getTitle2 = moredata.cast[lastItem].original_name;
               $scope.format_type = moredata.cast[lastItem].media_type;
