@@ -43,8 +43,8 @@
 
       item.artist_type = 'experimenting';
 
-      $scope.artist.most_recent = $scope.getTitle1
-      $scope.artist.media_type = $scope.format_type1
+      $scope.artist.most_recent = $scope.getTitle2
+      $scope.artist.media_type = $scope.format_type
 
       artistListing.$save(item);
 
