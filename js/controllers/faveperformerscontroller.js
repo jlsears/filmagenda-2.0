@@ -36,11 +36,8 @@
 
     $scope.saveFire = function(artist) {
 
-      $scope.artist_type = 'Experimenting again';
-
       var item = artistListing.$getRecord($scope.artist.$id);
 
-      $scope.artist.artist_type = 'experimenting NOW'
       $scope.artist.most_recent = $scope.getTitle2
       $scope.artist.media_type = $scope.format_type
 
@@ -89,8 +86,6 @@
 
               var lastItem = moredata.cast.length - 1;
 
-              console.log("before loop: " + moredata.cast[0].release_date);
-
               for(var i = 0; i < lastItem-1; i++) {
 
                 var firstMovie = moredata.cast[i].media_type;
@@ -98,12 +93,12 @@
 
                 if(firstMovie == "movie" && secMovie == "movie") {
 
-                var firstDate = moredata.cast[i].release_date;
-                var secDate = moredata.cast[i+1].release_date;
+                  var firstDate = moredata.cast[i].release_date;
+                  var secDate = moredata.cast[i+1].release_date;
 
-                if(firstDate > secDate) {
+                  if(firstDate > secDate) {
 
-                  $scope.getTitle2 = moredata.cast[i].original_title;
+                    $scope.getTitle2 = moredata.cast[i].original_title;
 
                   }
                 }
