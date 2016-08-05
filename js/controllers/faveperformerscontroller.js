@@ -36,13 +36,13 @@
 
     $scope.saveFire = function(artist) {
 
-      $scope.artist_type = 'Experiment NOW';
+      $scope.artist_type = 'Experimenting again';
 
       var item = artistListing.$getRecord($scope.artist.$id);
 
       $scope.artist.artist_type = 'experimenting NOW'
       $scope.artist.most_recent = $scope.getTitle2
-      //$scope.artist.media_type = $scope.format_type
+      $scope.artist.media_type = $scope.format_type
 
       artistListing.$save(item);
 
