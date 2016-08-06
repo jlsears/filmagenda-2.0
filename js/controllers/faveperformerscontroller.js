@@ -17,7 +17,8 @@
         name: $scope.name,
         artist_type: $scope.artist_type,
         most_recent: 'placeholder',
-        media_type: 'placeholder2'
+        media_type: 'placeholder2',
+        release_date: 'placeholder3'
       });
       $location.path('/menu');
       console.log('artist data added!!');
@@ -40,6 +41,7 @@
 
       $scope.artist.most_recent = $scope.getTitle2
       $scope.artist.media_type = $scope.format_type
+      $scope.artist.release_date = $scope.release_date
 
       artistListing.$save(item);
 
@@ -54,6 +56,7 @@
       var getTitle2;
       var format_type;
       var format_type1;
+      var release_date;
       var titleinfo = "not changed";
       var winningTitle = "";
 
@@ -100,6 +103,7 @@
 
                     $scope.getTitle2 = moredata.cast[i].original_title;
                     $scope.format_type = moredata.cast[i].media_type;
+                    $scope.release_date = moredata.cast[i].release_date;
 
                   }
                 }
