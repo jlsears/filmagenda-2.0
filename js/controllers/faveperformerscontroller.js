@@ -99,6 +99,7 @@
                   if(firstDate > secDate) {
 
                     $scope.getTitle2 = moredata.cast[i].original_title;
+                    $scope.format_type = moredata.cast[i].media_type;
 
                   }
                 }
