@@ -96,21 +96,14 @@
               for(var i = 0; i < lastItem-1; i++) {
 
                 var firstMovie = moredata.cast[i].media_type;
-                //var secMovie = moredata.cast[i+1].media_type;
 
                 if(firstMovie == "movie") {
 
-                  var firstDate = Date.parse(moredata.cast[i].release_date);
-                  //var secDate = Date.parse(moredata.cast[i+1].release_date);
-                  
+                  var firstDate = Date.parse(moredata.cast[i].release_date);                  
 
                   if(firstDate > winningDate) {
 
-                    console.log("firstDate is: " + firstDate + " and winningDate is: " + winningDate);
-
                     winningDate = firstDate;
-
-                    console.log("if statement updating for: " + moredata.cast[i].original_title);
 
                     $scope.getTitle2 = moredata.cast[i].original_title;
                     $scope.format_type = moredata.cast[i].media_type;
