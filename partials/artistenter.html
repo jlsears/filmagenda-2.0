@@ -12,7 +12,12 @@
         <label class="">Artist Type</label> <br>
       </div>
       <div>
-        <input id="artist_type" class='form-control' type='text' ng-model='artist_type' name="artist_type"/>
+        <input id="artist_type" list='type_artist' class='form-control' type='datalist' ng-model='artist_type' name="artist_type"/>
+          <datalist id="type_artist">
+            <option value="Actor">
+            <option value="Actress">
+            <option value="Director">
+          </datalist>
       </div><br>
 
       <button type='submit'class='btn btn-success'>Submit</button>
