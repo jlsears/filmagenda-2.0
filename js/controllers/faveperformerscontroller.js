@@ -87,13 +87,17 @@
               $scope.artist = artist;
 
               // cast variables
-              var castData = moredata.cast[0].original_title;
+              if($scope.artist.artist_type == "Performer") {
 
-              var lastItem = moredata.cast.length - 1;
+                var castData = moredata.cast[0].original_title;
 
-              var winningDate = 0;
+                var lastItem = moredata.cast.length - 1;
+
+                var winningDate = 0;
+
 
               for(var i = 0; i < lastItem-1; i++) {
+
 
                 var firstMovie = moredata.cast[i].media_type;
 
@@ -109,9 +113,13 @@
                     $scope.format_type = moredata.cast[i].media_type;
                     $scope.release_date = moredata.cast[i].release_date;
 
-                  }
-                }
+                  } // end if firstDate > winningDate
+                } // end if firstMovie == "movie"
               } // end for loop
+
+           } // end if cast statement
+              
+
             },
           })
 
