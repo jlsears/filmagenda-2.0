@@ -118,7 +118,40 @@
               } // end for loop
 
            } // end if cast statement
-              
+           
+           else {
+
+                var crewData = moredata.crew[0].original_title;
+
+                var lastItem = moredata.crew.length - 1;
+
+                var winningDate = 0;
+
+              for(var i = 0; i < lastItem-1; i++) {
+
+
+                var firstMovie = moredata.crew[i].media_type;
+
+                if(firstMovie == "movie") {
+
+                  var firstDate = Date.parse(moredata.crew[i].release_date);                  
+
+                  if(firstDate > winningDate) {
+
+                    winningDate = firstDate;
+
+                    $scope.getTitle2 = moredata.crew[i].original_title;
+                    $scope.format_type = moredata.crew[i].media_type;
+                    $scope.release_date = moredata.crew[i].release_date;
+
+                  } // end if firstDate > winningDate
+                } // end if firstMovie == "movie"
+              } // end for loop
+
+
+
+
+           }
 
             },
           })
