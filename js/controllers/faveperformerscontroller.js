@@ -91,12 +91,12 @@
 
                 var castData = moredata.cast[0].original_title;
 
-                var lastItem = moredata.cast.length - 1;
+                var lastItem = moredata.cast.length;
 
                 var winningDate = 0;
 
 
-              for(var i = 0; i < lastItem-1; i++) {
+              for(var i = 0; i < lastItem; i++) {
 
 
                 var firstMovie = moredata.cast[i].media_type;
