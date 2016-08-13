@@ -127,16 +127,21 @@
 
                 var winningDate = 0;
 
-              for(var i = 0; i < lastItem-1; i++) {
+              for(var i = 0; i < lastItem; i++) {
 
 
                 var firstMovie = moredata.crew[i].media_type;
 
                 if(firstMovie == "movie") {
 
-                  var firstDate = Date.parse(moredata.crew[i].release_date);                  
+                  var firstDate = Date.parse(moredata.crew[i].release_date); 
+
+                  console.log("i equals: " + i);
+                  console.log("date before if statement: " + moredata.crew[i].release_date);                 
 
                   if(firstDate > winningDate) {
+
+                    console.log("firstDate in if statement: " + moredata.crew[i].release_date);
 
                     winningDate = firstDate;
 
