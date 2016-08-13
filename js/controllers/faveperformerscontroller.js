@@ -16,9 +16,9 @@
       artistListing.$add({
         name: $scope.name,
         artist_type: $scope.artist_type,
-        most_recent: 'placeholder',
+        most_recent: 'pending',
         media_type: 'placeholder2',
-        release_date: 'placeholder3'
+        release_date: 'pending'
       });
       $location.path('/menu');
       console.log('artist data added!!');
