@@ -86,7 +86,7 @@
 
               $scope.artist = artist;
 
-              // cast variables
+              // cast variables for locating performer data
               if($scope.artist.artist_type == "Performer") {
 
                 var castData = moredata.cast[0].original_title;
@@ -119,11 +119,12 @@
 
            } // end if cast statement
            
+           // crew variables for locating director data
            else {
 
                 var crewData = moredata.crew[0].original_title;
 
-                var lastItem = moredata.crew.length - 1;
+                var lastItem = moredata.crew.length;
 
                 var winningDate = 0;
 
@@ -136,12 +137,7 @@
 
                   var firstDate = Date.parse(moredata.crew[i].release_date); 
 
-                  console.log("i equals: " + i);
-                  console.log("date before if statement: " + moredata.crew[i].release_date);                 
-
                   if(firstDate > winningDate) {
-
-                    console.log("firstDate in if statement: " + moredata.crew[i].release_date);
 
                     winningDate = firstDate;
 
@@ -152,14 +148,9 @@
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
               } // end for loop
-
-
-
-
-           }
-
-            },
-          })
+            }
+          },
+        })
 
           getAll2.then($scope.saveFire);
         }
