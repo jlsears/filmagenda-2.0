@@ -37,21 +37,43 @@
 
     $scope.saveFire = function(artist) {
 
-      var item = artistListing.$getRecord($scope.artist.$id);
+      var item = JSON.stringify(artist);
+      //console.log("artist name is now: " + item);
+
+      //console.log("item is: " + item);
+
+
+
+      //console.log("artistListing in saveFire is: " + JSON.stringify(artistListing));
+
+      console.log("getTitle2 in saveFire: " + $scope.getTitle2);
+
+      var getItem = $scope.item;
+      console.log("getItem in saveFire: " + getItem);
+      var currentItem = artistListing.$getRecord(getItem);
 
       $scope.artist.most_recent = $scope.getTitle2
       $scope.artist.media_type = $scope.format_type
       $scope.artist.release_date = $scope.release_date
 
-      artistListing.$save(item);
+      artistListing.$save(currentItem);
 
     }; // end saveFire
+
+
+
 
 
     $scope.findArtist = function(artist) {
       console.log("findArtist called!!!");
 
-      $scope.artist = artist.name;
+
+      //console.log("artistListing: " + JSON.stringify(artistListing));
+
+      // for loop through artist listing
+
+
+      $scope.artist = artist;
       var getTitle1;
       var getTitle2;
       var format_type;
@@ -59,8 +81,9 @@
       var release_date;
       var titleinfo = "not changed";
       var winningTitle = "";
+      var item = "";
 
-      var newName = $scope.artist.replace(/ /g, "?");
+      var newName = artist.name.replace(/ /g, "?");
 
       var suffix = ".json";
       var getArtistId = 0;
@@ -82,7 +105,7 @@
           dataType: "jsonp",
           success: function(moredata){
 
-              console.log(JSON.stringify(moredata));
+              //console.log(JSON.stringify(moredata));
 
               $scope.artist = artist;
 
@@ -112,6 +135,8 @@
                     $scope.getTitle2 = moredata.cast[i].original_title;
                     $scope.format_type = moredata.cast[i].media_type;
                     $scope.release_date = moredata.cast[i].release_date;
+                    $scope.item = artist.$id;
+                    console.log("id at end of API: " + $scope.item);
 
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
@@ -144,6 +169,8 @@
                     $scope.getTitle2 = moredata.crew[i].original_title;
                     $scope.format_type = moredata.crew[i].media_type;
                     $scope.release_date = moredata.crew[i].release_date;
+                    $scope.item = artist.$id;
+                    console.log("id at end of API: " + $scope.item);
 
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
@@ -157,6 +184,22 @@
      });  // end initial ajax call
     };
 
+    $scope.ruleAll = function(findArtist) {
+      console.log("ruleAll called!!!");
+
+
+      //console.log("artistListing: " + JSON.stringify(artistListing));
+      console.log("artistListing name at beinning of ruleAll: " + JSON.stringify(artistListing[0].name));
+
+      //for loop to rotate through artists
+
+      for(var j=0; j < artistListing.length; j++) {
+
+        $scope.findArtist(artistListing[j]);
+        console.log("running function for: " + artistListing[j].$id);
+
+        } // end for loop
+    };
 
     $scope.showListData = true;
 
