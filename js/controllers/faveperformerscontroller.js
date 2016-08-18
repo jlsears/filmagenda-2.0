@@ -38,18 +38,8 @@
     $scope.saveFire = function(artist) {
 
       var item = JSON.stringify(artist);
-      //console.log("artist name is now: " + item);
-
-      //console.log("item is: " + item);
-
-
-
-      //console.log("artistListing in saveFire is: " + JSON.stringify(artistListing));
-
-      console.log("getTitle2 in saveFire: " + $scope.getTitle2);
 
       var getItem = $scope.item;
-      console.log("getItem in saveFire: " + getItem);
       var currentItem = artistListing.$getRecord(getItem);
 
       $scope.artist.most_recent = $scope.getTitle2
@@ -58,20 +48,10 @@
 
       artistListing.$save(currentItem);
 
-    }; // end saveFire
-
-
-
-
+    }; 
 
     $scope.findArtist = function(artist) {
       console.log("findArtist called!!!");
-
-
-      //console.log("artistListing: " + JSON.stringify(artistListing));
-
-      // for loop through artist listing
-
 
       $scope.artist = artist;
       var getTitle1;
@@ -105,8 +85,6 @@
           dataType: "jsonp",
           success: function(moredata){
 
-              //console.log(JSON.stringify(moredata));
-
               $scope.artist = artist;
 
               // cast variables for locating performer data
@@ -136,8 +114,6 @@
                     $scope.format_type = moredata.cast[i].media_type;
                     $scope.release_date = moredata.cast[i].release_date;
                     $scope.item = artist.$id;
-                    console.log("id at end of API: " + $scope.item);
-
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
               } // end for loop
@@ -170,8 +146,6 @@
                     $scope.format_type = moredata.crew[i].media_type;
                     $scope.release_date = moredata.crew[i].release_date;
                     $scope.item = artist.$id;
-                    console.log("id at end of API: " + $scope.item);
-
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
               } // end for loop
@@ -185,11 +159,6 @@
     };
 
     $scope.ruleAll = function(findArtist) {
-      console.log("ruleAll called!!!");
-
-
-      //console.log("artistListing: " + JSON.stringify(artistListing));
-      console.log("artistListing name at beinning of ruleAll: " + JSON.stringify(artistListing[0].name));
 
       //for loop to rotate through artists
 
