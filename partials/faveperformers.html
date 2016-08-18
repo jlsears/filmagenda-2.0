@@ -8,7 +8,6 @@
             <td>Artist Type</td>
             <td>The Latest</td>
             <td>Projected Release Date</td>
-            <td>Get Latest</td>
             <td>Delete</td>
             <td>Edit</td>
       </thead>
@@ -18,7 +17,6 @@
             <td>{{artist.artist_type}}</td>
             <td id="artistproject">{{artist.most_recent}}</td>
             <td>{{artist.release_date}}</td>
-            <td><button type='button' id="search" ng-click="findArtist(artist)">Latest</button></td>
             <td><button type='button' class="btn btn-success" ng-click="deleteAnArtist(artist)"><span class="glyphicon glyphicon-trash"></span></button></td>
             <td><button type='button' class="btn btn-success" ng-click="showEditFieldsBtn(artist)"><span class="glyphicon glyphicon-pencil"></span></button></td>
         </tr>
