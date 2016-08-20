@@ -170,8 +170,8 @@
     };
 
     // calling ruleAll at interval of every 15 seconds
-    
-    $interval( function() { $scope.ruleAll(); }, 15000);
+
+    $interval( function() { $scope.ruleAll(); }, 30000);
  
     
     $scope.showListData = true;
