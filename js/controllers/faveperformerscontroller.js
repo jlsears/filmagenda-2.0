@@ -8,7 +8,6 @@
 
     var theProject = "";
 
-    //movieRef.$bindTo($scope, "movieinfo");
 
     $scope.artistlisting = artistListing;
 
@@ -170,24 +169,11 @@
         } // end for loop
     };
 
+    // calling ruleAll at interval of every 15 seconds
+    
     $interval( function() { $scope.ruleAll(); }, 15000);
-
-    //$scope.ruleAll($scope.findArtist);
-
-    //var needTimer = true;
-
+ 
     
-  
-/*    setInterval(function(){
-      var date = new Date();
-      if(date.getHours === 22 && date.getMinutes === 1) {
-        console.log("setInterval function called!");
-        $scope.ruleAll($scope.findArtist);
-      }
-    }, 60000); */   
-    
-
-
     $scope.showListData = true;
 
     $scope.showListDataBtn = function() {
