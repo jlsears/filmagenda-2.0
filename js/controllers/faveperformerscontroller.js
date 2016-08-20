@@ -1,4 +1,4 @@
-  app.controller('PerformerCtrl', ['$rootScope', '$scope', '$location', '$firebaseArray', function ($rootScope, $scope, $location, $firebaseArray){
+  app.controller('PerformerCtrl', ['$rootScope', '$scope', '$interval', '$location', '$firebaseArray', function ($rootScope, $scope, $interval, $location, $firebaseArray){
 
     var id = $rootScope.auth.uid.replace(':', '%3A');
     
@@ -169,6 +169,24 @@
 
         } // end for loop
     };
+
+    $interval( function() { $scope.ruleAll(); }, 15000);
+
+    //$scope.ruleAll($scope.findArtist);
+
+    //var needTimer = true;
+
+    
+  
+/*    setInterval(function(){
+      var date = new Date();
+      if(date.getHours === 22 && date.getMinutes === 1) {
+        console.log("setInterval function called!");
+        $scope.ruleAll($scope.findArtist);
+      }
+    }, 60000); */   
+    
+
 
     $scope.showListData = true;
 
