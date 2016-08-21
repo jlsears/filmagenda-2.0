@@ -19,7 +19,7 @@
         media_type: 'placeholder2',
         release_date: 'pending'
       });
-      $location.path('/menu');
+      $location.path('/faveperformers');
       console.log('artist data added!!');
     };
 
@@ -169,9 +169,9 @@
         } // end for loop
     };
 
-    // calling ruleAll at interval of every 25 seconds
+    // calling ruleAll at interval of every 24 hours
 
-    $interval( function() { $scope.ruleAll(); }, 25000);
+    $interval( function() { $scope.ruleAll(); }, 86400000);
  
     
     $scope.showListData = true;
