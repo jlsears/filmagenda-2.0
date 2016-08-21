@@ -31,7 +31,7 @@
       console.log('delete button clicked for artist controller!');
       artistListing.$remove(artist);
       console.log("Artist removed: " + artist);
-      $location.path('/menu');
+      $location.path('/faveperformers');
     };
 
     $scope.saveFire = function(artist) {
