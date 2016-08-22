@@ -20,7 +20,14 @@
         response: $scope.response || null,
         seenstatus: $scope.seenstatus
       });
-      $location.path('/menu');
+      if($scope.seenstatus === true) {
+
+        $location.path('/haveseen');
+      }
+      else{
+
+        $location.path('tosee');
+      }
       console.log('movie data added!!');
     };
 
