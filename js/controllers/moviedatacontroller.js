@@ -6,7 +6,6 @@
 
     var movieListing = $firebaseArray(movieRef);
 
-    //movieRef.$bindTo($scope, "movieinfo");
 
     $scope.movielisting = movieListing;
 
@@ -38,7 +37,7 @@
     $scope.deleteAMovie = function(movie) {
       console.log('delete button clicked for controller!');
       movieListing.$remove(movie);
-      console.log("removed: " + movie);B
+      console.log("removed: " + movie);
       $location.path('/menu');
     }
 
@@ -57,13 +56,6 @@
     }
 
     $scope.submitThis = function(movie) {
-/*      movieListing.$save({
-        title: $scope.title,
-        director: $scope.director,
-        theater: $scope.theater,
-        moviegoers: $scope.moviegoers,
-        seenstatus: $scope.seenstatus
-      });*/
       $scope.showEditFields = false; 
       $scope.showListData = true;
       console.log('movie data edited!!');

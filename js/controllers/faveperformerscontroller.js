@@ -169,9 +169,9 @@
         } // end for loop
     };
 
-    // calling ruleAll at interval of every 24 hours
+    // calling ruleAll at interval of every 24 hours 86400000
 
-    $interval( function() { $scope.ruleAll(); }, 86400000);
+    $interval( function() { $scope.ruleAll(); }, 15000);
  
     
     $scope.showListData = true;
