@@ -11,6 +11,7 @@
 
     $scope.artistlisting = artistListing;
 
+    // When an artists needs to be added to Firebase
     $scope.addArtistData = function() {
       artistListing.$add({
         name: $scope.name,
@@ -27,6 +28,7 @@
         console.log(event);
       });
 
+    // When an artist needs to be deleted from Firebase
     $scope.deleteAnArtist = function(artist) {
       console.log('delete button clicked for artist controller!');
       artistListing.$remove(artist);
@@ -34,10 +36,10 @@
       $location.path('/faveperformers');
     };
 
+    // Called via ruleAll/findArtist to update Firebase with the final result of the iteration
     $scope.saveFire = function(artist) {
 
       var item = JSON.stringify(artist);
-
       var getItem = $scope.item;
       var currentItem = artistListing.$getRecord(getItem);
 
@@ -49,6 +51,7 @@
 
     }; 
 
+    // This will be called by ruleAll as it iterates through the favorite artists listed
     $scope.findArtist = function(artist) {
       console.log("findArtist called!!!");
 
@@ -86,7 +89,7 @@
 
               $scope.artist = artist;
 
-              // cast variables for locating performer data
+              // A) Reviewing cast data for artists who are performers
               if($scope.artist.artist_type == "Performer") {
 
                 var castData = moredata.cast[0].original_title;
@@ -98,11 +101,13 @@
 
               for(var i = 0; i < lastItem; i++) {
 
-
                 var firstMovie = moredata.cast[i].media_type;
 
+                // Only want to retrieve entries for movies, not TV appearances, etc.
                 if(firstMovie == "movie") {
 
+                  // Listings will not necessarily be in chronological order, 
+                  // so must examine each date in order to identify most recent listing
                   var firstDate = Date.parse(moredata.cast[i].release_date);                  
 
                   if(firstDate > winningDate) {
@@ -116,10 +121,9 @@
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
               } // end for loop
-
            } // end if cast statement
            
-           // crew variables for locating director data
+           // B) Reviewing crew data for artists who are directors
            else {
 
                 var crewData = moredata.crew[0].original_title;
@@ -133,8 +137,11 @@
 
                 var firstMovie = moredata.crew[i].media_type;
 
+                // Again, only want to retrieve movie entries
                 if(firstMovie == "movie") {
 
+                  // As in the above if portion, must review each date reflected
+                  // in order to ensure the most recent project is identified
                   var firstDate = Date.parse(moredata.crew[i].release_date); 
 
                   if(firstDate > winningDate) {
@@ -148,19 +155,20 @@
                   } // end if firstDate > winningDate
                 } // end if firstMovie == "movie"
               } // end for loop
-            }
-          },
-        })
+            } // end else for directors
+          }, // end second success function
+        }) // end second ajax call
 
+          // Waiting to save updates to Firebase until review of the artist's movie projects is complete
           getAll2.then($scope.saveFire);
-        }
-     });  // end initial ajax call
+        } // end first success function
+     }); // end initial ajax call
     };
 
+    // Called to update Firebase with the title of the artist's most recent project
     $scope.ruleAll = function(findArtist) {
 
       //for loop to rotate through artists
-
       for(var j=0; j < artistListing.length; j++) {
 
         $scope.findArtist(artistListing[j]);
@@ -170,10 +178,10 @@
     };
 
     // calling ruleAll at interval of every 24 hours 86400000
-
-    $interval( function() { $scope.ruleAll(); }, 15000);
+    $interval( function() { $scope.ruleAll(); }, 86400000);
  
-    
+    // **Functions related to user's view of/interaction with the page below
+
     $scope.showListData = true;
 
     $scope.showListDataBtn = function() {
